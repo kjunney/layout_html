@@ -62,32 +62,6 @@
 $(document).ready(function(){
 	$("aside").hide();
 });
-alert("http://home.ebs.co.kr/gon/main".indexOf("home.ebs.co.kr"));
-
-function selectOnProgram(url, value) {
-	if (url != null && value != null) {
-		if (url.indexOf("home.ebs.co.kr") >= 0) {
-			$.ajax({
-				url : "${ctx}/tvapp/tvapponair/ajax/" + value,
-				type : 'POST',
-				dataType : 'json',
-				async : false,
-				success : function(data) {
-					if (data.reactiveType == "009") {
-						location.href = url + "/main?link=full";
-					} else {
-						location.href = url + "?link=pop";
-					}
-				}
-			});
-		} else {
-			// home.ebs.co.kr 주소가 아닐경우 처리 예
-			// 아래의 경고 문구는 고객과 문의 후 진행하시면 될것으로 보입니다.
-			alert("방송 홈페이지가 아닐경우 접속이 되지 않습니다.");
-		}
-	}
-}
-
 </script>
 <header>
 	<div class="hmp_logo">logo</div>
