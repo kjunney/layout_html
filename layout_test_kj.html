@@ -1,0 +1,197 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>Document</title>
+<link rel="stylesheet" type="text/css" href="./reset.css" />
+  <style>
+  /* 링크 공통 css */
+  a {text-decoration:none;}
+  a:actived {text-decoration:none;}
+  a:visited {text-decoration:none;}
+  a:hover{text-decoration:underline;}
+
+  header { width:1000px;margin:0 auto; background:#ccc; overflow:hidden; }
+  header .hmp_logo { height:40px;float:left;font-size:30px; }
+  header .login_type { height:40px;float:right;margin-top:15px; }
+  header .login_type a { margin-left:10px;margin-right:10px;color:#000; }
+  section { width:1000px;margin:0 auto; background:#0cc;overflow:hidden; }
+  article { width:200px;float:left; background:#c0c; margin-right:5px; }
+  article .left_menu { padding:10px 0px; }
+  article .left_menu li { list-style:none;padding:5px 5px; }
+  article .left_menu li a { color:#000; }
+  
+  /* 본문 3단 css */
+  .contents.step3 { width:570px; float:left; background:#fff; padding:10px; }
+  .contents.step3 h1 { padding:10px;margin-bottom:10px; font-size:18px; }
+  .contents.step3 .board_list { width:550px;border-collapse:separate; margin:0 auto; }
+  .contents.step3 .board_list tr:nth-child(even) {background-color: #f2f2f2}
+  .contents.step3 .board_list tr td { padding:10px; border-bottom:1px gray solid; }
+  .contents.step3 .board_list tr td a { color:#666; }
+  .contents.step3 .board_list tr th { padding:10px 2px; border-bottom:1px gray solid; background-color: #4CAF50; color: white;}
+  .contents.step3 .paging { width:520px; margin:0 auto; text-align:center;padding:15px; }
+  .contents.step3 .paging .num { display:inline-block; }
+  .contents.step3 .paging .num a { color:#00a;font-size:14px;padding:5px; }
+  .contents.step3 .btn { float:right;text-align:right; padding:15px; position:relative; top:-40px; }
+  
+  /* 본문 2단 css */
+  .contents.step2 { width:770px; float:right; background:#fff; padding:10px; }
+  .contents.step2 h1 { padding:10px;margin-bottom:10px; font-size:18px; }
+  .contents.step2 .board_list { width:750px;border-collapse:separate; margin:0 auto; }
+  .contents.step2 .board_list tr:nth-child(even) {background-color: #f2f2f2}
+  .contents.step2 .board_list tr td { padding:10px; border-bottom:1px gray solid; }
+  .contents.step2 .board_list tr td a { color:#666; }
+  .contents.step2 .board_list tr th { padding:10px 2px; border-bottom:1px gray solid; background-color: #4CAF50; color: white;}
+  .contents.step2 .paging { width:520px; margin:0 auto; text-align:center;padding:15px; }
+  .contents.step2 .paging .num { display:inline-block; }
+  .contents.step2 .paging .num a { color:#00a;font-size:14px;padding:5px; }
+  .contents.step2 .btn { float:right;text-align:right; padding:15px; position:relative; top:-40px; }
+  
+  aside { width:200px; float:right; background:#cc0; }
+  footer { width:980px; margin:0 auto; background:#ddd; padding:20px 10px; font-size:12px; }
+  footer .address { margin-bottom:20px; }
+  </style>
+<script type="text/javascript" src="http://home.ebs.co.kr/common/js/jquery-1.8.3.min.js"></script>
+ </head>
+ <body>
+<script>
+$(document).ready(function(){
+	$("aside").hide();
+});
+alert("http://home.ebs.co.kr/gon/main".indexOf("home.ebs.co.kr"));
+
+function selectOnProgram(url, value) {
+	if (url != null && value != null) {
+		if (url.indexOf("home.ebs.co.kr") >= 0) {
+			$.ajax({
+				url : "${ctx}/tvapp/tvapponair/ajax/" + value,
+				type : 'POST',
+				dataType : 'json',
+				async : false,
+				success : function(data) {
+					if (data.reactiveType == "009") {
+						location.href = url + "/main?link=full";
+					} else {
+						location.href = url + "?link=pop";
+					}
+				}
+			});
+		} else {
+			// home.ebs.co.kr 주소가 아닐경우 처리 예
+			// 아래의 경고 문구는 고객과 문의 후 진행하시면 될것으로 보입니다.
+			alert("방송 홈페이지가 아닐경우 접속이 되지 않습니다.");
+		}
+	}
+}
+
+</script>
+<header>
+	<div class="hmp_logo">logo</div>
+	<div class="login_type">
+		<a href="#">login</a>
+		<a href="#">join</a>
+		<a href="#">sitemap</a>
+	</div>
+</header>
+<section>
+	<article>
+		<ul class="left_menu">
+			<li><a href="#">메뉴1</a></li>
+			<li><a href="#">메뉴2</a></li>
+			<li><a href="#">메뉴3</a></li>
+			<li><a href="#">메뉴4</a></li>
+			<li><a href="#">메뉴5</a></li>
+		</ul>
+	</article>
+	<div class="contents step2">
+		<h1>공지사항</h1>
+		<table class="board_list" border="1">
+			<colgroup>
+				<col width="40">
+				<col width="">
+				<col width="80">
+			</colgroup>
+			<thead>
+				<tr>
+					<th>No.</th>
+					<th>제목</th>
+					<th>날짜</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td>1</td>
+					<td><a href="#">게시글4입니다.</a></td>
+					<td>2017/01/12</td>
+				</tr>
+				<tr>
+					<td>2</td>
+					<td><a href="#">게시글3입니다.</a></td>
+					<td>2017/01/11</td>
+				</tr>
+				<tr>
+					<td>3</td>
+					<td><a href="#">게시글2입니다.</a></td>
+					<td>2017/01/10</td>
+				</tr>
+				<tr>
+					<td>4</td>
+					<td><a href="#">게시글입니다.</a></td>
+					<td>2017/01/09</td>
+				</tr>
+			</tbody>
+		</table>
+		<div class="paging">
+			<span class="num">
+				<a href="#">&lt;&lt;</a>
+				<a href="#">&lt;</a>
+				<a href="#">1</a>
+				<a href="#">2</a>
+				<a href="#">3</a>
+				<a href="#">4</a>
+				<a href="#">5</a>
+				<a href="#">6</a>
+				<a href="#">7</a>
+				<a href="#">8</a>
+				<a href="#">9</a>
+				<a href="#">10</a>
+				<a href="#">&gt;</a>
+				<a href="#">&gt;&gt;</a>
+			</span>
+		</div>
+		<div class="btn">
+			<a href="#" class="btn_act">등록</a>
+		</div>
+	</div>
+	<aside>
+	aside<br/>
+	aside<br/>
+	aside<br/>
+	aside<br/>
+	aside<br/>
+	aside<br/>
+	aside<br/>
+	aside<br/>
+	aside<br/>
+	aside<br/>
+	aside<br/>
+	aside<br/>
+	aside<br/>
+	aside<br/>
+	aside<br/>
+	aside<br/>
+	</aside>
+</section>
+
+<footer>
+	<p class="address">
+	00000 서울시 강남구 XX동 111
+	</p>
+	Copyright &copy; Test Homepage. All Rights Reserved.
+</footer>
+ </body>
+</html>
